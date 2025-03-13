@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"net"
 	"net/http"
-
 	"github.com/fma965/cloudflarewarp/ips"
 )
 
@@ -104,7 +103,7 @@ func (r *RealIPOverWriter) ServeHTTP(rw http.ResponseWriter, req *http.Request) 
 		r.next.ServeHTTP(rw, req)
 		return
 	}
-	if trustResult.trusted {
+	if req.Header.Get(cfConnectingIP) != "" && trustResult.trusted {
 		if req.Header.Get(cfVisitor) != "" {
 			var cfVisitorValue CFVisitorHeader
 			if err := json.Unmarshal([]byte(req.Header.Get(cfVisitor)), &cfVisitorValue); err != nil {
@@ -117,12 +116,10 @@ func (r *RealIPOverWriter) ServeHTTP(rw http.ResponseWriter, req *http.Request) 
 			req.Header.Set(xForwardProto, cfVisitorValue.Scheme)
 		}
 		req.Header.Set(xCfTrusted, "yes")
-		if req.Header.Get(cfConnectingIP) != "" {
-			req.Header.Set(xForwardFor, req.Header.Get(cfConnectingIP))
-			req.Header.Set(xRealIP, req.Header.Get(cfConnectingIP))
-		}
+		req.Header.Set(xForwardFor, req.Header.Get(cfConnectingIP))
+		req.Header.Set(xRealIP, req.Header.Get(cfConnectingIP))
 	} else {
-		http.Error(rw, "Not Cloudflare or TrustedIP", http.StatusTeapot)
+		http.Error(rw, "Not Cloudflare or TrustedIP", http.StatusForbidden)
 		return
 	}
 	r.next.ServeHTTP(rw, req)
