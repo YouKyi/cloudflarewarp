@@ -32,7 +32,7 @@ If you do not define `trustip` and `disableDefault`, it doesn't seem to load the
 experimental:
   plugins:
     cloudflarewarp:
-      moduleName: github.com/zekihan/cloudflarewarp
+      moduleName: github.com/fma965/cloudflarewarp
       version: v1.4.0
 ```
 
@@ -66,7 +66,7 @@ http:
 
 # Testing
 
-[https://github.com/zekihan/cloudflarewarp/tree/master/test](https://github.com/zekihan/cloudflarewarp/tree/master/test)
+[https://github.com/fma965/cloudflarewarp/tree/master/test](https://github.com/fma965/cloudflarewarp/tree/master/test)
 
 We have written the following tests in this repo:
 
