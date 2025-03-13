@@ -1,8 +1,8 @@
-# Real IP from Cloudflare Proxy/Tunnel
+# Real IP from Cloudflare Proxy/Tunnel with LAN Whitelist
 
 Forked From https://github.com/BetterCorp/cloudflarewarp
 
-Fixes old issue [#19](https://github.com/BetterCorp/cloudflarewarp/issues/19), will force Error if not cloudflare or TrustIP unlike original code
+NOTE: This fork will force "403 error Not Cloudflare or TrustedIP" if not cloudflare or TrustIP unlike original code
 
 If Traefik is behind a Cloudflare Proxy/Tunnel, it won't be able to get the real IP from the external client as well as other information.
 
@@ -18,7 +18,7 @@ Supported configurations per body
 
 | Setting        | Allowed values | Required | Description                                         |
 | :------------- | :------------- | :------- | :-------------------------------------------------- |
-| trustip        | []string       | No       | IP or IP range to trust                             |
+| trustip        | []string       | No       | IP or IP range(s) to trust                          |
 | disableDefault | bool           | Yes      | Disable the built in list of CloudFlare IPs/Servers |
 
 ### Notes re CloudFlare
@@ -47,9 +47,10 @@ http:
       plugin:
         cloudflarewarp:
           disableDefault: false
-          trustip: # Trust IPS not required if disableDefault is false - we will allocate Cloud Flare IPs automatically
-            - "2400:cb00::/32"
-
+          trustip: # Trust IPS not required if disableDefault is false - we will allocate Cloud Flare IPs automatically, can be used to add additional CIDR's like LAN networks
+            - 10.0.0.0/8
+            - 172.16.0.0/12
+            - 192.168.0.0/16
   routers:
     my-router:
       rule: Path(`/whoami`)
