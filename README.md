@@ -2,7 +2,7 @@
 
 Forked From https://github.com/BetterCorp/cloudflarewarp
 
-Fixes old issue [#19](https://github.com/BetterCorp/cloudflarewarp/issues/19)
+Fixes old issue [#19](https://github.com/BetterCorp/cloudflarewarp/issues/19), will force Error if not cloudflare or TrustIP unlike original code
 
 If Traefik is behind a Cloudflare Proxy/Tunnel, it won't be able to get the real IP from the external client as well as other information.
 
