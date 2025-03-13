@@ -122,10 +122,8 @@ func (r *RealIPOverWriter) ServeHTTP(rw http.ResponseWriter, req *http.Request) 
 			req.Header.Set(xRealIP, req.Header.Get(cfConnectingIP))
 		}
 	} else {
-		req.Header.Set(xCfTrusted, "no")
-		req.Header.Set(xRealIP, trustResult.directIP)
-		req.Header.Del(cfVisitor)
-		req.Header.Del(cfConnectingIP)
+		http.Error(rw, "Not Cloudflare or TrustedIP", http.StatusTeapot)
+		return
 	}
 	r.next.ServeHTTP(rw, req)
 }
