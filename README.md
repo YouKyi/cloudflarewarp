@@ -1,6 +1,6 @@
 # Real IP from Cloudflare Proxy/Tunnel with LAN Whitelist
 
-Forked From https://github.com/BetterCorp/cloudflarewarp
+Forked From https://github.com/BetterCorp/cloudflarewarp and reforked from https://github.com/fma965/cloudflarewarp
 
 NOTE: This fork will force "403 error Not Cloudflare or TrustedIP" if not cloudflare or TrustIP unlike original code
 
@@ -34,7 +34,7 @@ If you do not define `trustip` and `disableDefault`, it doesn't seem to load the
 experimental:
   plugins:
     cloudflarewarp:
-      moduleName: github.com/fma965/cloudflarewarp
+      moduleName: https://github.com/YouKyi/cloudflarewarp#
       version: v1.0.0
 ```
 

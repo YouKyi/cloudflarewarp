@@ -1,6 +1,6 @@
 displayName: Allow only Real IP from Cloudflare Proxy/Tunnel with LAN Whitelist
 type: middleware
-import: github.com/fma965/cloudflarewarp
+import: github.com/YouKyi/cloudflarewarp
 iconPath: .assets/icon.png
 
 summary: resolve Cloudflare IPs, 403 blocks if non CF or Allowed IP is source 

@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"net"
 	"net/http"
-	"github.com/fma965/cloudflarewarp/ips"
+	"https://github.com/YouKyi/cloudflarewarp/ips"
 )
 
 const (

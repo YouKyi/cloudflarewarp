@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"testing"
 
-	plugin "github.com/fma965/cloudflarewarp"
+	plugin "github.com/YouKyi/cloudflarewarp"
 )
 
 func TestNew(t *testing.T) {
