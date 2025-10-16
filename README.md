@@ -34,7 +34,7 @@ If you do not define `trustip` and `disableDefault`, it doesn't seem to load the
 experimental:
   plugins:
     cloudflarewarp:
-      moduleName: https://github.com/YouKyi/cloudflarewarp#
+      moduleName: https://github.com/YouKyi/cloudflarewarp
       version: v1.0.0
 ```
 
