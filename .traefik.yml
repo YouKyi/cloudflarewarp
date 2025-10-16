@@ -1,4 +1,4 @@
-displayName: Allow only Real IP from Cloudflare Proxy/Tunnel with LAN Whitelist
+displayName: Allow only Real IP from Cloudflare Proxy/Tunnel with LAN Whitelisting
 type: middleware
 import: github.com/YouKyi/cloudflarewarp
 iconPath: .assets/icon.png
