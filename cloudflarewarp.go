@@ -116,8 +116,12 @@ func (r *RealIPOverWriter) ServeHTTP(rw http.ResponseWriter, req *http.Request) 
 			req.Header.Set(xForwardProto, cfVisitorValue.Scheme)
 		}
 		req.Header.Set(xCfTrusted, "yes")
-		req.Header.Set(xForwardFor, req.Header.Get(cfConnectingIP))
-		req.Header.Set(xRealIP, req.Header.Get(cfConnectingIP))
+
+		// Overwrite X-Forwarded-For and X-Real-IP with the real visitor IP from Cloudflare.
+		// This is the Nginx-like behavior that prevents proxy IPs from leaking to the backend application.
+		realIP := req.Header.Get(cfConnectingIP)
+		req.Header.Set(xForwardFor, realIP)
+		req.Header.Set(xRealIP, realIP)
 	} else {
 		http.Error(rw, "Not Cloudflare or TrustedIP", http.StatusForbidden)
 		return
