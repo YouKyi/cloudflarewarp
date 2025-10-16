@@ -35,7 +35,7 @@ experimental:
   plugins:
     cloudflarewarp:
       moduleName: github.com/fma965/cloudflarewarp
-      version: v1.4.0
+      version: v1.0.0
 ```
 
 ### Plugin configuration
